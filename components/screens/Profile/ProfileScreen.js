@@ -18,6 +18,7 @@ import {
   fetchUserFollowing,
   fetchUsersFollowingPosts,
   fetchUsersData,
+  clearData
 } from '../../redux/actions/actions';
 import LinearGradient from 'react-native-linear-gradient';
 import FastImage from 'react-native-fast-image';
@@ -49,6 +50,7 @@ const ProfileScreen = ({navigation, route}) => {
   }, [dispatch, following, route.params.name, route.params.uid]);
 
   const signOut = () => {
+    dispatch(clearData())
     auth().signOut();
   };
   const followed = () => {
@@ -114,6 +116,8 @@ const ProfileScreen = ({navigation, route}) => {
         )}
 
         <Text> You have no Posts</Text>
+        <Button title="Sign Out" onPress={signOut} />
+
       </View>
     );
   }

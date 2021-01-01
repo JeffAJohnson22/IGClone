@@ -33,6 +33,10 @@ const Login = ({navigation}) => {
           Alert.alert('This is not a valid email address');
           console.log('That email address is invalid!');
         }
+        if (err.code === 'auth/wrong-password') {
+          Alert.alert('This information enter is not complete');
+          console.log('That password is invalid!');
+        }
         console.error(err);
       });
   };
